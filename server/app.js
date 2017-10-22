@@ -43,6 +43,7 @@ MODELS
 */
 
 require('./models/User');
+require('./config/passport');
 
 /*
 *
