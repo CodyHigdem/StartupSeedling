@@ -38,6 +38,18 @@ if(isProduction){
   mongoose.set('debug', true);
 }
 
+/*
+MODELS
+*/
+
+require('./models/User');
+
+/*
+*
+* Be sure to include models 
+* before routes so that our 
+* routes will be able to use our models.
+*/
 app.use(require('./routes'));
 
 /// catch 404 and forward to error handler
