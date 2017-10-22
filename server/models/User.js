@@ -1,15 +1,20 @@
 const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
+
 
 const usernameValidation = {
 	type: String, 
-	lowercase: true, 
+	lowercase: true,
+	unique: true,
 	required: [true, "can't be blank"], 
 	match: [/^[a-zA-Z0-9]+$/, 'is invalid'], 
 	index: true}
 
+
 const emailValidation = {
 	type: String, 
-	lowercase: true, 
+	lowercase: true,
+	unique: true,
 	required: [true, "can't be blank"], 
 	match: [/\S+@\S+\.\S+/, 'is invalid'], 
 	index: true
