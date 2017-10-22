@@ -1,7 +1,16 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var UserSchema = new mongoose.Schema({
-  username: String,
+const usernameValidation = {
+	type: String, 
+	lowercase: true, 
+	required: [true, "can't be blank"], 
+	match: [/^[a-zA-Z0-9]+$/, 'is invalid'], 
+	index: true}
+
+
+
+const UserSchema = new mongoose.Schema({
+  username: usernameValidation,
   email: String,
   bio: String,
   image: String,
