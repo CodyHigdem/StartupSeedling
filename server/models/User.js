@@ -72,6 +72,18 @@ UserSchema.methods.toAuthJSON = function(){
 	};
 };
 
+/*
+* Method to get public profile data
+*/
+UserSchema.methods.toProfileJSONFor = function(){
+	return {
+		username: this.username,
+		bio: this.bio,
+		image: this.image || 'https://static.productionready.io/images/smiley-cyrus.jpg',
+		following: false
+	};
+};
+
 
 
 mongoose.model('User', UserSchema);
