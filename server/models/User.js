@@ -7,11 +7,18 @@ const usernameValidation = {
 	match: [/^[a-zA-Z0-9]+$/, 'is invalid'], 
 	index: true}
 
+const emailValidation = {
+	type: String, 
+	lowercase: true, 
+	required: [true, "can't be blank"], 
+	match: [/\S+@\S+\.\S+/, 'is invalid'], 
+	index: true
+}
 
 
 const UserSchema = new mongoose.Schema({
   username: usernameValidation,
-  email: String,
+  email: emailValidation,
   bio: String,
   image: String,
   hash: String,
