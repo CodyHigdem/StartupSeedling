@@ -30,4 +30,7 @@ const UserSchema = new mongoose.Schema({
   salt: String
 }, {timestamps: true});
 
+
+UserSchema.plugin(uniqueValidator, {message: 'is already taken.'});
+
 mongoose.model('User', UserSchema);
