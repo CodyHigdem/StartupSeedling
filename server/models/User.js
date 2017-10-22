@@ -33,4 +33,17 @@ const UserSchema = new mongoose.Schema({
 
 UserSchema.plugin(uniqueValidator, {message: 'is already taken.'});
 
+/*
+We'll be generating a random salt for each user. 
+Then we can use crypto.crypto.pbkdf2Sync() to generate hashes using the salt. 
+pbkdf2Sync() takes five parameters: The password to hash, the salt, 
+the iteration (number of times to hash the password), the length (how long the hash should be), and the algorithm.
+*/
+//adjust accordingly
+
+UserSchema.methods.setPassword = function(password){
+	this.salt = crypto.randomBytes(16).toString('hex');
+	this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
+};
+
 mongoose.model('User', UserSchema);
