@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 router.use('/', require('./users'));
-router.user('/profiles', require('./profiles'));
+router.use('/profiles', require('./profiles'));
 
 
 /*
